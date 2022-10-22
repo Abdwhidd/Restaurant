@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant/model/RestaurantResponse.dart';
 import 'package:restaurant/ui/pages/DetailScreen.dart';
 import 'package:restaurant/ui/pages/HomeScreen.dart';
+import 'package:restaurant/ui/pages/SplashScreen.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          '/': (context) => const HomeScreen(),
+          '/': (context) => SplashScreen(),
           '/homescreen': (context) => const HomeScreen(),
           DetailScreen.routeName: (context) => DetailScreen(
                 restaurant:
