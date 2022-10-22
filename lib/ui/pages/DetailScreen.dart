@@ -128,6 +128,8 @@ class DetailScreen extends StatelessWidget {
                     style: const TextStyle(
                       color: ColorTheme.blackColor,
                     ),
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
