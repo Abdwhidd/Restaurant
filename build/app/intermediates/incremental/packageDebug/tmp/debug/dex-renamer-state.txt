@@ -1,0 +1,4 @@
+#Sat Oct 22 16:00:16 WIB 2022
+base.0=/Users/wahid/Documents/GitHub/Restaurant/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
