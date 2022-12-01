@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:restaurant/model/RestaurantResponse.dart';
 import 'package:restaurant/ui/components/CustomCard.dart';
 import 'package:restaurant/ui/pages/DetailScreen.dart';
+import 'package:restaurant/ui/theme/ColorTheme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget setError(BuildContext context) {
     return Container(
-      color: Colors.purple,
+      color: Colors.red,
       width: double.infinity,
       child: const Center(
         child: Padding(
@@ -55,105 +56,78 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget content(BuildContext context, Restaurant restaurant) {
-    return Material(
-      color: Colors.white,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () {
-          Navigator.pushNamed(context, DetailScreen.routeName,
-              arguments: restaurant);
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Stack(
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, DetailScreen.routeName,
+            arguments: restaurant);
+      },
+      child: Container(
+        padding: EdgeInsets.only(left: 16),
+        child: Row(
+          children: [
+            Image.network(
+              restaurant.pictureId,
+              height: 130,
+              width: 130,
+              fit: BoxFit.fitWidth,
+            ),
+            SizedBox(
+              width: 16,
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.network(
-                  restaurant.pictureId,
-                  height: MediaQuery.of(context).size.width * 0.5,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.fitWidth,
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.width * 0.5,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0x80000000),
-                        Color(0x80000000),
-                      ],
-                    ),
+                Text(
+                  restaurant.name,
+                  style: blackTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, left: 8.0),
-                      child: Text(
-                        restaurant.name,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 26,
-                          fontWeight: FontWeight.w600,
+                SizedBox(
+                  height: 5,
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      const WidgetSpan(
+                        child: Icon(
+                          Icons.location_pin,
+                          size: 18,
+                          color: Colors.black,
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, left: 8.0),
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            const WidgetSpan(
-                              child: Icon(
-                                Icons.location_pin,
-                                size: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                            TextSpan(
-                              text: restaurant.city,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
+                      TextSpan(
+                        text: restaurant.city,
+                        style: blackTextStyle.copyWith(),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      const WidgetSpan(
+                        child: Icon(
+                          Icons.star,
+                          size: 18,
+                          color: ColorTheme.orangeColor,
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8, left: 8),
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            const WidgetSpan(
-                              child: Icon(
-                                Icons.star,
-                                size: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                            TextSpan(
-                              text: restaurant.rating.toString(),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
+                      TextSpan(
+                        text: restaurant.rating.toString(),
+                        style: blackTextStyle.copyWith(),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
-          ),
+          ],
         ),
       ),
     );

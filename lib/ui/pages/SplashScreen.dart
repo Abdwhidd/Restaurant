@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:restaurant/ui/theme/ColorTheme.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -22,14 +23,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorTheme.redColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/splash.png',
-              width: 178,
+            Text(
+              "Restaurant",
+              style: whiteTextStyle.copyWith(
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ],
         ),

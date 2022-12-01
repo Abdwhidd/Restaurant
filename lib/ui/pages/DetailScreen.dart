@@ -14,8 +14,12 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(restaurant.name),
-        backgroundColor: ColorTheme.orangeColor,
+        title: Text(
+          restaurant.name,
+          style: whiteTextStyle.copyWith(
+              fontWeight: FontWeight.w600, fontSize: 18),
+        ),
+        backgroundColor: ColorTheme.redColor,
       ),
       body: ListView(
         children: [
@@ -38,10 +42,8 @@ class DetailScreen extends StatelessWidget {
                     children: [
                       Text(
                         restaurant.name,
-                        style: const TextStyle(
-                            color: ColorTheme.blackColor,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w600),
+                        style: blackTextStyle.copyWith(
+                            fontWeight: FontWeight.w600, fontSize: 20),
                       ),
                       CustomFavoriteButton(),
                     ],
@@ -69,14 +71,13 @@ class DetailScreen extends StatelessWidget {
                         children: [
                           Text(
                             restaurant.city,
-                            style: const TextStyle(
-                                color: ColorTheme.blackColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500),
+                            style: blackTextStyle.copyWith(
+                                fontWeight: FontWeight.w600, fontSize: 16),
                           ),
-                          const Text(
+                          Text(
                             'Jl. Lorem Ipsum No. 10',
-                            style: TextStyle(color: ColorTheme.greyColor),
+                            style: greyTextStyle.copyWith(
+                                fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
@@ -99,7 +100,7 @@ class DetailScreen extends StatelessWidget {
                     Text(
                       restaurant.rating.toString(),
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                          blackTextStyle.copyWith(fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -115,19 +116,14 @@ class DetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Description',
-                    style: TextStyle(
-                      color: ColorTheme.blackColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: blackTextStyle.copyWith(
+                        fontWeight: FontWeight.w600, fontSize: 16),
                   ),
                   Text(
                     restaurant.description,
-                    style: const TextStyle(
-                      color: ColorTheme.blackColor,
-                    ),
+                    style: greyTextStyle.copyWith(fontWeight: FontWeight.w500),
                     maxLines: 4,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -142,16 +138,12 @@ class DetailScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   child: Text(
                     'Foods',
-                    style: TextStyle(
-                      color: ColorTheme.blackColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: blackTextStyle.copyWith(
+                        fontWeight: FontWeight.w600, fontSize: 16),
                   ),
                 ),
                 SingleChildScrollView(
@@ -172,7 +164,8 @@ class DetailScreen extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   food.name!,
-                                  style: TextStyle(color: Colors.white),
+                                  style: whiteTextStyle.copyWith(
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ),
                             ),
@@ -181,19 +174,15 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 8,
                 ),
-                const Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   child: Text(
                     'Drinks',
-                    style: TextStyle(
-                      color: ColorTheme.blackColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: blackTextStyle.copyWith(
+                        fontWeight: FontWeight.w600, fontSize: 16),
                   ),
                 ),
                 SingleChildScrollView(
@@ -213,7 +202,8 @@ class DetailScreen extends StatelessWidget {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     drink.name!,
-                                    style: TextStyle(color: Colors.white),
+                                    style: whiteTextStyle.copyWith(
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ),
                               ))
