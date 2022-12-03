@@ -62,72 +62,75 @@ class _HomeScreenState extends State<HomeScreen> {
             arguments: restaurant);
       },
       child: Container(
+        width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(left: 16),
-        child: Row(
-          children: [
-            Image.network(
-              restaurant.pictureId,
-              height: 130,
-              width: 130,
-              fit: BoxFit.fitWidth,
-            ),
-            SizedBox(
-              width: 16,
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  restaurant.name,
-                  style: blackTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+        child: Expanded(
+          child: Row(
+            children: [
+              Image.network(
+                restaurant.pictureId,
+                height: 150,
+                width: 150,
+                fit: BoxFit.fitWidth,
+              ),
+              SizedBox(
+                width: 16,
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    restaurant.name,
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      const WidgetSpan(
-                        child: Icon(
-                          Icons.location_pin,
-                          size: 18,
-                          color: Colors.black,
+                  SizedBox(
+                    height: 5,
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        const WidgetSpan(
+                          child: Icon(
+                            Icons.location_pin,
+                            size: 18,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                      TextSpan(
-                        text: restaurant.city,
-                        style: blackTextStyle.copyWith(),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      const WidgetSpan(
-                        child: Icon(
-                          Icons.star,
-                          size: 18,
-                          color: ColorTheme.orangeColor,
+                        TextSpan(
+                          text: restaurant.city,
+                          style: blackTextStyle.copyWith(),
                         ),
-                      ),
-                      TextSpan(
-                        text: restaurant.rating.toString(),
-                        style: blackTextStyle.copyWith(),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  SizedBox(
+                    height: 8,
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        const WidgetSpan(
+                          child: Icon(
+                            Icons.star,
+                            size: 18,
+                            color: ColorTheme.orangeColor,
+                          ),
+                        ),
+                        TextSpan(
+                          text: restaurant.rating.toString(),
+                          style: blackTextStyle.copyWith(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
