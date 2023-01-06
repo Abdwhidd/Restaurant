@@ -248,6 +248,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "shimmer",
+      "rootUri": "file:///Users/wahid/.pub-cache/hosted/pub.dartlang.org/shimmer-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/wahid/fvm/versions/3.3.4/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -338,7 +344,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-12-01T13:03:07.008645Z",
+  "generated": "2022-12-30T12:40:46.197217Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }

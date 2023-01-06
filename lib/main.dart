@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant/model/RestaurantResponse.dart';
-import 'package:restaurant/ui/pages/DetailScreen.dart';
-import 'package:restaurant/ui/pages/HomeScreen.dart';
-import 'package:restaurant/ui/pages/SplashScreen.dart';
+import 'package:restaurant/ui/pages/detail_screen.dart';
+import 'package:restaurant/ui/pages/home_screen.dart';
+import 'package:restaurant/ui/pages/splash_screen.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
