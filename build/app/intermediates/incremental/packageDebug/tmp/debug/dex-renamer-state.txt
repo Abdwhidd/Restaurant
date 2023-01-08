@@ -1,4 +1,4 @@
-#Wed Jan 04 14:55:04 WITA 2023
+#Sun Jan 08 14:16:18 WITA 2023
 base.0=/Users/wahid/Documents/GitHub/Restaurant/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

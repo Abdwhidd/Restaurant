@@ -7,6 +7,7 @@ import 'package:restaurant/ui/components/custom_card.dart';
 import 'package:restaurant/ui/components/custom_shimmer.dart';
 import 'package:restaurant/ui/pages/detail_screen.dart';
 import 'package:restaurant/ui/theme/ColorTheme.dart';
+import 'package:restaurant/ui/widget/card_decoration.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -60,79 +61,87 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget content(BuildContext context, Restaurant restaurant) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, DetailScreen.routeName,
-            arguments: restaurant);
-      },
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 16),
-        child: Expanded(
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.only(top: 12, bottom: 10),
+      child: Ink(
+        decoration: cardDecoration(),
+        child: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, DetailScreen.routeName,
+                arguments: restaurant);
+          },
           child: Row(
             children: [
-              Image.network(
-                restaurant.pictureId,
-                height: 150,
-                width: 150,
-                fit: BoxFit.fitWidth,
-              ),
-              SizedBox(
-                width: 16,
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    restaurant.name,
-                    style: blackTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
+              Hero(
+                tag: restaurant.name,
+                child: Container(
+                  width: 85,
+                  height: 85,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(restaurant.pictureId),
+                    ),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      bottomLeft: Radius.circular(8),
                     ),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        const WidgetSpan(
-                          child: Icon(
-                            Icons.location_pin,
-                            size: 18,
-                            color: Colors.black,
-                          ),
-                        ),
-                        TextSpan(
-                          text: restaurant.city,
-                          style: blackTextStyle.copyWith(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        const WidgetSpan(
-                          child: Icon(
-                            Icons.star,
-                            size: 18,
-                            color: ColorTheme.orangeColor,
-                          ),
-                        ),
-                        TextSpan(
-                          text: restaurant.rating.toString(),
-                          style: blackTextStyle.copyWith(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
+              Expanded(
+                flex: 3,
+                child: Container(
+                  margin: EdgeInsets.only(left: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        restaurant.name,
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w700),
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                        softWrap: false,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 2),
+                        child: Text(
+                          restaurant.city,
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 8),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              color: ColorTheme.orangeColor,
+                              size: 16,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 8),
+                              child: Text(
+                                restaurant.rating.toString(),
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Icon(
+                  Icons.arrow_forward_ios,
+                  color: ColorTheme.orangeColor,
+                ),
+                flex: 1,
+              )
             ],
           ),
         ),
